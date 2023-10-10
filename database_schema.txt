@@ -24,4 +24,4 @@ DATABASE StudentPortal :
        
          CourseId (primarykey, integer type)
        
-         CourseName (notnull, vachar type)
+         CourseName (notnull, vachar type)  
