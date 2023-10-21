@@ -11,7 +11,7 @@ This documentation outlines the database schema for the Java Portal. The schema 
 
 ## Link for the ER Diagram:
 
-For the entity-relationship diagram (ERD) representing the relationships between tables, please refer to the following link: [Java Portal ER Diagram](https://ibb.co/6JHkWmX).
+For the entity-relationship diagram (ERD) representing the relationships between tables<a href="https://ibb.co/6JHkWmX" target="_blank"><img src="https://i.ibb.co/4g8HV71/final-ER-Diagram.png" alt="final-ER-Diagram" border="0" /></a>
 
 
 
