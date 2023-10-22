@@ -9,7 +9,7 @@ This documentation outlines the database schema for the Java Portal. The schema 
 - Authored by: Amisha Kumar
 - SQL Queries extracted by: Aryan Dwivedi
 
-## Link for the ER Diagram:
+## ER Diagram:
 
 For the entity-relationship diagram (ERD) representing the relationships between tables [![ER Diagram](https://i.ibb.co/4g8HV71/final-ER-Diagram.png)](https://ibb.co/6JHkWmX)
 
@@ -18,9 +18,9 @@ For the entity-relationship diagram (ERD) representing the relationships between
 
 ## Database Schema
 
-### Course Details Table
+### course Table
 
-The Course Details table stores information about courses, including their names and status.
+The course table stores information about courses, including their names and status.
 
 
 |  Field         |  Type           |  Null  |  Key  |  Extra           |
@@ -34,11 +34,14 @@ The Course Details table stores information about courses, including their names
 |  updated_at    |  datetime(6)    |  YES   |       |                  |
 
 
-## Sample Queries
 
 Here are some sample SQL queries to demonstrate how to retrieve or manipulate data from the database:
-# Queries for creation of Courses Table
-CREATE TABLE courses (
+
+
+## Query for creation of `course` Table
+
+```sql
+CREATE TABLE course (
     id BIGINT(20) NOT NULL AUTO_INCREMENT,
     course_detail VARCHAR(255),
     course_id VARCHAR(255),
@@ -49,31 +52,39 @@ CREATE TABLE courses (
     PRIMARY KEY (id)
 );
 
-# Query for insertion in Course Table
-INSERT INTO courses (course_detail, course_id, course_name, created_at, status, updated_at)
+# Query for insertion in course Table
+
+INSERT INTO course (course_detail, course_id, course_name, created_at, status, updated_at)
 VALUES ('Course details 1', 'C001', 'Course 1', '2023-10-22 12:00:00.000000', 1, '2023-10-22 12:30:00.000000');
 
+
 # Query for  updation in table Data
-UPDATE courses
+
+UPDATE course
 SET course_name = 'Updated Course 1'
 WHERE id = 1;
 
+
 # Query for deletion of a course
-DELETE FROM courses
+
+DELETE FROM course
 WHERE id = 1;
+
 
 # Query for altering Table
 
-ALTER TABLE courses
+ALTER TABLE course
 ADD COLUMN new_column_name VARCHAR(255);
+```
 
 
 
 
 
-### Students Table
 
-The Students table contains data about students, including their personal information and the course they are enrolled in.
+### student Table
+
+The student table contains data about students, including their personal information and the course they are enrolled in.
 
 
 |  Field         |  Type           |  Null  |  Key  |  Extra           |
@@ -91,12 +102,12 @@ The Students table contains data about students, including their personal inform
 |  updated_at    |  datetime(6)    |  YES   |       |                  |
 
 
-## Sample Queries
 
 Here are some sample SQL queries to demonstrate how to retrieve or manipulate data from the database:
 
-# Query for creation of Student Table
+## Query for creation of `students` Table
 
+```sql
 CREATE TABLE students (
     id BIGINT(20) NOT NULL AUTO_INCREMENT,
     address VARCHAR(255),
@@ -112,33 +123,38 @@ CREATE TABLE students (
     PRIMARY KEY (id)
 );
 
-# Query for insertion in Student Table
+# Query for insertion in student Table
 
-INSERT INTO students (address, city, course_id, created_at, date_of_birth, email, mobile_number, status, student_name, updated_at)
+INSERT INTO student (address, city, course_id, created_at, date_of_birth, email, mobile_number, status, student_name, updated_at)
 VALUES ('123 Main St', 'Sample City', 'C001', '2023-10-22 12:00:00.000000', '2000-01-01', 'student@example.com', '123-456-7890', 1, 'John Doe', '2023-10-22 12:30:00.000000');
-# Query for updation in Student Table
-UPDATE students
-SET student_name = 'Jahn Sammy'
+
+
+# Query for deletion in Student Table
+
+DELETE FROM student
 WHERE id = 1;
 
-# Query for deletion in Table
+# Query for updation in Student Table
 
-DELETE FROM students
+UPDATE student
+SET student_name = 'Jahn Sammy'
 WHERE id = 1;
 
  # Query for altering Table
 
- ALTER TABLE students
+ALTER TABLE student
 DROP COLUMN mobile_number;
+```
 
 
 
 
 
 
-### Users Table
 
-The Users table stores user account information for authentication.
+### user Table
+
+The user table stores user account information for authentication.
 
 
 |  Field         |  Type           |  Null  |  Key  |  Extra           |
@@ -150,14 +166,12 @@ The Users table stores user account information for authentication.
 |  updated_at    |  datetime(6)    |  YES   |       |                  |
 |  username      |  varchar(255)   |  YES   |       |                  |
 
-
-## Sample Queries
-
 Here are some sample SQL queries to demonstrate how to retrieve or manipulate data from the database:
 
-# Query for creation of users Table
+## Query for creation of `user` Table
 
-CREATE TABLE users (
+```sql
+CREATE TABLE user (
     id BIGINT(20) NOT NULL AUTO_INCREMENT,
     created_at DATETIME(6),
     email VARCHAR(255) UNIQUE,
@@ -167,24 +181,25 @@ CREATE TABLE users (
     PRIMARY KEY (id)
 );
 
+
 # Query for insertion of data in Table
 
-INSERT INTO users (created_at, email, password, updated_at, username)
+INSERT INTO user (created_at, email, password, updated_at, username)
 VALUES ('2023-10-22 15:00:00.000000', 'newuser@example.com', 'password123', '2023-10-22 15:30:00.000000', 'newuser');
+
 
 # Query for updation in Table
 
-UPDATE users
+UPDATE user
 SET email = 'updatedemail@example.com', password = 'newpassword'
 WHERE id = 1;
 
 # Query for deletion of data from table
 
-DELETE FROM users
+DELETE FROM user
 WHERE id = 1;
 
 # Query for altering data in Table
 
-ALTER TABLE users
+ALTER TABLE user
 ADD COLUMN new_column_name VARCHAR(255);
-
