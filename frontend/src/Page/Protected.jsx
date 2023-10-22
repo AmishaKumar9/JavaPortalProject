@@ -6,9 +6,8 @@ import { Navigate } from 'react-router-dom';
 const Protected = ({children}) => {
      const isLoggedIn=window.localStorage.getItem("isLoggedIn");
      const user=useSelector(selectLoggedInUser);
-     console.log(isLoggedIn)
-    if (!(isLoggedIn|| user)) {
-      return <Navigate to="/login" replace={true}></Navigate>;
+    if (!(isLoggedIn)) {
+      return <Navigate to="/Login" replace={true}></Navigate>;
     }
     return children;
 }

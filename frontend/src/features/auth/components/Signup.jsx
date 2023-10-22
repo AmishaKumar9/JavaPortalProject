@@ -1,14 +1,14 @@
 import { useSelector, useDispatch } from "react-redux";
 import { useForm } from "react-hook-form";
 import "./css/signup.css";
-import { selectLoggedInUser, createUserAsync } from "../authSlice";
+import { selectLoggedInUser, createUserAsync, selectError } from "../authSlice";
 import { Link } from "react-router-dom";
 import { Navigate } from "react-router-dom";
-
+import img from "../../../Page/image/ESD_LOGO_Rectangular.png"
 export default function Signup() {
   const dispatch = useDispatch();
   const user = useSelector(selectLoggedInUser);
-
+  const err = useSelector(selectError)
   const {
     register,
     handleSubmit,
@@ -20,20 +20,22 @@ export default function Signup() {
       {user && <Navigate to="/" replace={true}></Navigate>}
       <div className="fluid-container">
         <form
-        noValidate
-          className="form"
+          noValidate
+          className="form-box"
           onSubmit={handleSubmit((data) => {
             dispatch(
               createUserAsync({
                 email: data.email,
                 password: data.password,
-                name:data.fullname
+                username: data.fullname
                 //TODO: this role can be directly given on backend
               })
             );
-            console.log(data);
+           
           })}
         >
+          <img src={img} alt="user" className="img1" />
+
           <p className="form-title">Create your account</p>
           <div className="input-container">
             <input
@@ -65,6 +67,10 @@ export default function Signup() {
             />
             {errors.email && (
               <p className="text-red-500">{errors.email.message}</p>
+            )}
+            {err && (
+              <p className="text-red-500">{"User with given email exists"}</p>
+
             )}
             <span></span>
           </div>
@@ -107,10 +113,16 @@ export default function Signup() {
             Sign up
           </button>
           <p className="signup-link">
-            Already a memmber{"  "}
-            <Link to="/login">Log in</Link>
+            Already a memmber...!{"  "}
+            <br></br>
+            <Link to="/login" className='sinup'>Log in</Link>
           </p>
+          {err && (
+            <p className="text-red-500">{"User Already exists"}</p>
+
+          )}
         </form>
+
       </div>
     </>
   );

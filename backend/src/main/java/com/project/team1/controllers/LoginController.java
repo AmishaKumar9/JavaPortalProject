@@ -44,8 +44,7 @@ public class LoginController {
 	
 	@PostMapping("/userlogin")
 	public ResponseEntity<?> login(@RequestBody UserLoginRequest request) {
-		// Find the user by email
-		System.out.print(request.getEmail());
+		// Find the user by email		
 		User user = userService.findByEmail(request.getEmail());
 
 		// Check if the user exists

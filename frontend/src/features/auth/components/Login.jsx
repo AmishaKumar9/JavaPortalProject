@@ -3,28 +3,31 @@ import { selectError, selectLoggedInUser } from '../authSlice';
 import { Link, Navigate } from 'react-router-dom';
 import { checkUserAsync } from '../authSlice';
 import { useForm } from 'react-hook-form';
+import "react-toastify/dist/ReactToastify.css";
 import "./css/signup.css"
+import img from "../../../Page/image/ESD_LOGO_Rectangular.png"
 export default function Login() {
   const dispatch = useDispatch();
 
   const user = useSelector(selectLoggedInUser);
   const err=useSelector(selectError)
+
   const {
     register,
     handleSubmit,
     formState: { errors },
   } = useForm();
+ 
 
-  console.log(errors);
 
   return (
     <>
       {user && <Navigate to="/" replace={true}></Navigate>}
       <div className="fluid-container">
- 
+          
         <form
         noValidate
-          className="form"
+          className="form-box"
           onSubmit={handleSubmit((data) => {
             dispatch(
               checkUserAsync({ email: data.email, password: data.password })
@@ -32,12 +35,15 @@ export default function Login() {
         
           })}
         >
+          
+          <img src={img} alt="user" />
+        
           <p className="form-title">Login to your account</p>
           <div className="input-container">
             <input
               id="email"
               {...register("email", {
-                required: "email is required",
+                required: "Email is required",
                 pattern: {
                   value: /\b[\w\.-]+@[\w\.-]+\.\w{2,4}\b/gi,
                   message: "Email not valid",
@@ -66,21 +72,27 @@ export default function Login() {
               })}
               type="password"
               placeholder="Enter password"
+          
             />
             {errors.password && (
               <p className="text-red-500">{errors.password.message}</p>
             )}
           </div>
           {err && (
-              <p className="text-red-500">{err}</p>
+              <p className="text-red-500">{"Invalid Credentials"}</p>
             )}
           <button type="submit" className="submit">
             Login
           </button>
           <p className="signup-link">
             Don't have an account {"  "}
-            <Link to="/signup">Sign up</Link>
+            <br></br>
+            <Link to="/signup" className='sinup'>Sign up</Link>
           </p>
+        
+          
+          
+         
         </form>
       </div>
     </>

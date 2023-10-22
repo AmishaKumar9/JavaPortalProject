@@ -39,7 +39,6 @@ public class StudentController {
 	// Save a new Student
 	@PostMapping("/savestudent")
 	public Student saveStudent(@RequestBody Student obj) {
-		System.out.println(obj);
 		return Sservice.saveStudent(obj);
 	}
 
