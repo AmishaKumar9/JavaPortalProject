@@ -1,7 +1,7 @@
-# Java Portal App
+# Java Portal Project
 
 ## Overview
-This is a Java portal application that manages student, user, and course information. It consists of a frontend developed using HTML, CSS, JavaScript, React, and Redux, and a backend implemented with Java Spring Boot. Additionally, there is database documentation and a testing report for this application.
+This is a Java portal that manages student, user, and course information. It consists of a frontend developed using HTML, CSS, JavaScript, React, and Redux, and a backend implemented with Java Spring Boot. Additionally, there is database documentation and a testing report for this web application.
 
 ## Technologies Used
 - *Frontend*:
